@@ -78,9 +78,9 @@ namespace SimplePasswordGenerator
 
         private void ValidateOptions(uint passwordLength)
         {
-            if (passwordLength > 1024)
+            if (passwordLength < 1 || passwordLength > 1024)
             {
-                throw new GeneratorException("The length of the password cannot be greater than 1024");
+                throw new GeneratorException("The length of the password must be a positive number between 1 and 1024");
             }
         }
 

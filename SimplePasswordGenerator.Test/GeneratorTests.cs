@@ -27,10 +27,9 @@ namespace SimplePasswordGenerator.Test
             var generator = new Generator();
             string value = GenerateRandomString(100);
 
-            // Act - generate a long random string 
-            generator.Specials = value;
-            
+            // Act
             // Assert
+            generator.Specials = value;
         }
 
         [Theory]
@@ -47,6 +46,38 @@ namespace SimplePasswordGenerator.Test
 
             // Assert
             Assert.Equal(expected, generator.Specials);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1025)]
+        public void Specials_WhenLengthIsInvalid_ThrowsGenerationException(uint length)
+        {
+            // Arrange
+            var generator = new Generator();
+
+            // Act
+            // Assert
+            Assert.Throws<GeneratorException>(() => generator.Generate(length));
+        }
+
+        [Fact]
+        public void Specials_WhenLengthIsValid_DoesNotThrow()
+        {
+            // Arrange
+            var generator = new Generator();
+            int validLength = GenerateRandomNumber(1, 1024);
+
+            // Act
+            // Assert
+            generator.Generate((uint)validLength);
+        }
+
+        private int GenerateRandomNumber(int lowest, int highest)
+        {
+            var random = new Random();
+            var validLength = random.Next(lowest, highest + 1);
+            return validLength;
         }
 
         private string GenerateRandomString(uint length)
