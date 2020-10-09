@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SimplePasswordGenerator.Library
+namespace SimplePasswordGenerator
 {
     public class GeneratorException : ApplicationException
     {
