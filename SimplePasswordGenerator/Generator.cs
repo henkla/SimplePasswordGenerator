@@ -68,7 +68,7 @@ namespace PasswordGenerator.Library
             ValidateOptions(passwordLength);
 
             var result = "";
-            result = GetCasing(casing, result);
+            result = GetLetters(casing, result);
             result = GetSpecials(useSpecials, result);
             result = GetNumerics(useNumerics, result);
             result = ApplyFilter(filter, result);
@@ -84,7 +84,7 @@ namespace PasswordGenerator.Library
             }
         }
 
-        private string GetCasing(PasswordCasing casing, string result)
+        private string GetLetters(PasswordCasing casing, string result)
         {
             switch (casing)
             {
