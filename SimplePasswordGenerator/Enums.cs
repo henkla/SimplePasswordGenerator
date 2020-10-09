@@ -1,4 +1,4 @@
-﻿namespace PasswordGenerator.Library
+﻿namespace SimplePasswordGenerator.Library
 {
     /// <summary>
     /// Decides which casing the password will have.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace PasswordGenerator.Library
+namespace SimplePasswordGenerator.Library
 {
     public class Generator
     {

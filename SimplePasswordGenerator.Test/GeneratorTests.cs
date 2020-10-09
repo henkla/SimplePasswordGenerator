@@ -1,4 +1,4 @@
-﻿using PasswordGenerator.Library;
+﻿using SimplePasswordGenerator.Library;
 using System;
 using System.Linq;
 using Xunit;
