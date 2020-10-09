@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace SimplePasswordGenerator.Library
+namespace SimplePasswordGenerator
 {
     public class Generator
     {
@@ -60,7 +60,7 @@ namespace SimplePasswordGenerator.Library
         /// <param name="filter">this will prevent any of the characters in this filter from appearing in the password</param>
         /// <returns></returns>
         public string Generate(uint passwordLength, 
-                               PasswordCasing casing, 
+                               Casing casing = Casing.Mixed, 
                                bool useSpecials = false, 
                                bool useNumerics = false, 
                                string filter = null)
@@ -84,17 +84,17 @@ namespace SimplePasswordGenerator.Library
             }
         }
 
-        private string GetLetters(PasswordCasing casing, string result)
+        private string GetLetters(Casing casing, string result)
         {
             switch (casing)
             {
-                case PasswordCasing.Uppercase:
+                case Casing.Uppercase:
                     result += _letters;
                     break;
-                case PasswordCasing.Lowercase:
+                case Casing.Lowercase:
                     result += _letters.ToLower();
                     break;
-                case PasswordCasing.Mixed:
+                case Casing.Mixed:
                     result += _letters + _letters.ToLower();
                     break;
             }
