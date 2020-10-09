@@ -1,4 +1,4 @@
-name: build, test, pack & push to nuget
+name: .NET Core
 
 on:
   push:
