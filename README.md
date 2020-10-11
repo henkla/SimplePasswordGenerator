@@ -1,8 +1,7 @@
 # Simple Password Generator
 This library will generate a password given the options provided. It is a .NET Standard 2.0 library, so it works in both .NET Core and .NET Framework. It has no external dependencies and is light weight.
 
-##### License
-[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/henkla/SimplePasswordGenerator.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 
 ## :gift: Provided in the repository
 Here is a run-down of what the repository contains (at least the code parts):
