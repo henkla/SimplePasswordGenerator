@@ -10,7 +10,7 @@ Install-Package SimplePasswordGenerator -Version 1.2.0
 ```
 
 ##### Visual Studio NuGet manager
-just search for `SimplePasswordGenerator`
+just search for `SimplePasswordGenerator`, select it and hit `install` 
 
 
 ##### .NET CLI
@@ -30,7 +30,7 @@ paket add SimplePasswordGenerator --version 1.2.0
 
 ## Using the Simple Password Generator
 
-Then, create the generator object:
+Before generating a password, we need the actual generator. Create the generator object as shown below:
 
 ```csharp
 var generator = new Generator();
@@ -41,9 +41,9 @@ or, if you prefer to have more control of which characters to be uses as seed fo
 var generator = new Generator(letters: "abc", numerics: "123", specials: "@#?");
 ```
 _NOTE: the letters, numerics and specials provided by default (if none are provided in the constructor as shown above) are:_
-+ _letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ_
-+ _numerics: 1234567890_
-+ _specials: !@#$%&[]()=?+*-\__
++ _letters: *ABCDEFGHIJKLMNOPQRSTUVWXYZ*_
++ _numerics: *1234567890*_
++ _specials: *!@#$%&[]()=?+*-\_*_
 
 After that, you can generate your password by calling the generators `Generate()` function like so:
 
@@ -57,10 +57,10 @@ You can also provide additional parameters when generating passwords. All these 
 
 | Parameter                | Type     | Default value    |
 | ------------------------ |:--------:| ---------------- |
-| `casing`                 | `enum`   | `Casing.Mixed`   |
-| `useSpecials`            | `bool`   | `true`           |
-| `useNumerics`            | `bool`   | `true`           |
-| `filter`                 | `string` | `null` (no filter provided) |
+| `casing`                 | *enum*   | `Casing.Mixed`   |
+| `useSpecials`            | *bool*   | `true`           |
+| `useNumerics`            | *bool*   | `true`           |
+| `filter`                 | *string* | `null` (no filter provided) |
 
 #### How filters work
 You can chose to filter out specific characters, i.e preventing those characters from ever ending up in the password generated. Simply provide the characters you want to avoid as a string for the `filter` parameter as shown above.
