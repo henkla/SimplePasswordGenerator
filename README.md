@@ -151,7 +151,7 @@ catch (GeneratorException e)
 
 ---
 
-## :construction_worker: To be implemented
-+ Accept only alpha's in the `letters` parameter
+## :construction_worker: Yet to be implemented
++ Accept only alphas in the `letters` parameter
 + Accept only numerics in the `numerics` parameter
 + Make sure the final seed has no duplicates
