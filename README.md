@@ -29,11 +29,17 @@ Then, create the generator object:
 ```csharp
 var generator = new Generator();
 ```
-or if you prefer to have more control of what characters to use as seed for the password:
+or if you prefer to have more control of which characters to use as seed for the password:
 
 ```csharp
 var generator = new Generator(letters: "abc", numerics: "123", specials: "@#?");
 ```
+_NOTE: the letters, numerics and specials provided by default are:_
+_letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ_
+_numerics: 1234567890_
+_specials: !@#$%&[]()=?+*-\__
+
+Then, 
 
 ## Example
 Use the Simple Password Generator like so:
