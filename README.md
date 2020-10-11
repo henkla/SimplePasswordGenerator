@@ -64,7 +64,7 @@ After that, you can generate your password by calling the generators `Generate()
 var myPassword = generator.Generate(16);
 ```
 
-where `16` is the desired length of your password. Any length beginning with 1 and ending with 1024 is valid. The type returned from `Generate()` is a simple string.
+where `16` is the desired length of your password. Any length beginning with `1` and ending with `1024` is valid. The type returned from `Generate()` is a simple string.
 
 You can also provide additional parameters when generating passwords. All these parameters are optional. The default value of each follows each listing below:
 
