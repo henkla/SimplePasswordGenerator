@@ -61,7 +61,7 @@ var generator = new Generator();
 generator.Specials = "!#@";
 ```
 
-*NOTE: A blank space is not accepted and will throw a `GeneratorException` if provided. Also, any duplicate character will be removed. In other words - `@@!!@!` is equal to `@!`.*
+*__NOTE__: A blank space is not accepted and will throw a `GeneratorException` if provided. Also, any duplicate character will be removed. In other words - `@@!!@!` is equal to `@!`.*
 
 ##### :bulb: Default password seed
 The letters, numerics and specials provided by default (if none are provided in the constructor as shown above) are:
