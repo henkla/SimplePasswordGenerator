@@ -1,7 +1,7 @@
 # Simple Password Generator
 This library will generate a password given the options provided. It is a .NET Standard 2.0 library, so it works in both .NET Core and .NET Framework. It has no external dependencies and is light weight.
 
-## Getting Started
+## :hammer: Getting Started
 First, install the nuget package. You can check out the package on the [NuGet website](https://www.nuget.org/packages/SimplePasswordGenerator/) if you like. To install it, chose your prefered method below:
 
 ##### Visual Studio Package Manager
@@ -28,7 +28,7 @@ dotnet add package SimplePasswordGenerator --version 1.2.0
 paket add SimplePasswordGenerator --version 1.2.0
 ```
 
-## Using the Simple Password Generator
+## :key: Using the Simple Password Generator
 
 Before generating a password, we need the actual generator. Create the generator object as shown below:
 
@@ -62,10 +62,10 @@ You can also provide additional parameters when generating passwords. All these 
 | `useNumerics`            | **bool**   | `true`           |
 | `filter`                 | **string** | `null` (no filter provided) |
 
-#### How filters work
+#### :bulb: How filters work
 You can chose to filter out specific characters, i.e preventing those characters from ever ending up in the password generated. Simply provide the characters you want to avoid as a string for the `filter` parameter as shown above.
 
-## Full blown example
+## :construction: Full blown example
 Here is a full example of how to use the generator, with all valid parameters provided for the sake of the demonstration:
 
 ```csharp
@@ -93,7 +93,7 @@ This will print out (at least in this case) the following in the console:
 The password is: AwMHK)fzhQqKF*&ymoKu-Uofhp8lY5Ug
 ```
 
-## What if something goes wrong?
+## :no_entry: What if something goes wrong?
 If anything goes wrong, the Simple Password Generator will throw a `GeneratorException` (which is an extension of `ApplicationException`). That way, you can easily cherry pick exceptions that originates from the generator specifically, without having to parse any exception origin.
 
 ##### Example
