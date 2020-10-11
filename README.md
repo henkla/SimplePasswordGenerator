@@ -51,7 +51,7 @@ Before generating a password, we need the actual generator. Create the generator
 ```csharp
 var generator = new Generator();
 ```
-or, if you prefer to have more control over which characters to be uses as seed for the password:
+or, if you prefer to have more control over which characters to be used as seed for the password:
 
 ```csharp
 var generator = new Generator(letters: "abc", numerics: "123", specials: "@#?");
