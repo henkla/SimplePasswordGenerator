@@ -54,7 +54,7 @@ var generator = new Generator(letters: "abc", numerics: "123", specials: "@#?");
 ```
 
 ##### :bulb: Setting specials characters later on
-It is possible to set the special characters at a later poin t(after the generator object has been created). Simply access the `Specials` field and provide whatever `string` value you like:
+It is possible to set the special characters at a later point (after the generator object has been created). Simply access the `Specials` field and provide whatever `string` value you like:
 
 ```csharp
 var generator = new Generator();
