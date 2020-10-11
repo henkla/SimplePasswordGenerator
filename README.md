@@ -1,7 +1,7 @@
 # Simple Password Generator
 This library will generate a password given the options provided. It is a .NET Standard 2.0 library, so it works in both .NET Core and .NET Framework. It has no external dependencies and is light weight.
 
-[![GitHub license](https://img.shields.io/github/license/henkla/SimplePasswordGenerator.svg)](https://github.com/henkla/SimplePasswordGenerator/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/henkla/SimplePasswordGenerator.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/henkla/SimplePasswordGenerator/stargazers/)
+[![GitHub license](https://img.shields.io/github/license/henkla/SimplePasswordGenerator.svg)](https://github.com/henkla/SimplePasswordGenerator/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/henkla/SimplePasswordGenerator.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/henkla/SimplePasswordGenerator/stargazers/) [![GitHub watchers](https://img.shields.io/github/watchers/henkla/SimplePasswordGenerator.svg?style=social&label=Watch&maxAge=2592000)](https://GitHub.com/henkla/SimplePasswordGenerator/watchers/)
 
 ## :gift: Provided in the repository
 Here is a run-down of what the repository contains (at least the code parts):
