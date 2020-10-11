@@ -11,7 +11,7 @@ This is a .NET Core console application, making use of the library as a way to o
 The library itself is covered by unit tests (`xUnit`), which are hooked up in the CI/CD pipeline (`GitHub Actions`). In other words - no new package release will see the light of the day if any of the unit tests should fail.
 
 #### SimplePasswordGenerator
-This is the actual library itself. It consists of only three files, each representing a class (or enum). I told you it was light-weight!
+This is the actual library itself. It consists of only three files, each representing a class (or enum). *I told you it was light-weight!*
 
 ## :hammer: Getting Started
 First, install the nuget package. You can check out the package on the [NuGet website](https://www.nuget.org/packages/SimplePasswordGenerator/) if you like. To install it, chose your prefered method below:
