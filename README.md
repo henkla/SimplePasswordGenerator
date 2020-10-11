@@ -13,6 +13,8 @@ The library itself is covered by unit tests (`xUnit`), which are hooked up in th
 #### SimplePasswordGenerator
 This is the actual library itself. It consists of only three files, each representing a class (or enum). *I told you it was light-weight!*
 
+---
+
 ## :hammer: Getting Started
 First, install the nuget package. You can check out the package on the [NuGet website](https://www.nuget.org/packages/SimplePasswordGenerator/) if you like. To install it, chose your prefered method below:
 
@@ -39,6 +41,8 @@ dotnet add package SimplePasswordGenerator --version 1.2.0
 ```
 paket add SimplePasswordGenerator --version 1.2.0
 ```
+
+---
 
 ## :key: Using the Simple Password Generator
 
@@ -89,6 +93,8 @@ You can also provide **additional** parameters when generating passwords. All th
 #### :bulb: How filters work
 You can chose to filter out specific characters, i.e preventing those characters from ever ending up in the password generated. Simply provide the characters you want to avoid as a string for the `filter` parameter as shown above.
 
+---
+
 ## :construction: Full blown example
 Here is a full example of how to use the generator, with all valid parameters provided for the sake of the demonstration:
 
@@ -116,6 +122,8 @@ This will print out (at least in this case) the following in the console:
 ```
 The password is: AwMHK)fzhQqKF*&ymoKu-Uofhp8lY5Ug
 ```
+
+---
 
 ## :no_entry: What if something goes wrong?
 If anything goes wrong, the Simple Password Generator will throw a `GeneratorException` (which is an extension of `ApplicationException`). That way, you can easily cherry pick exceptions that originates from the generator specifically, without having to parse any exception origin.
