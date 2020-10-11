@@ -35,9 +35,9 @@ or if you prefer to have more control of which characters to use as seed for the
 var generator = new Generator(letters: "abc", numerics: "123", specials: "@#?");
 ```
 _NOTE: the letters, numerics and specials provided by default are:_
-_letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ_
-_numerics: 1234567890_
-_specials: !@#$%&[]()=?+*-\__
++ _letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ_
++ _numerics: 1234567890_
++ _specials: !@#$%&[]()=?+*-\__
 
 Then, 
 
