@@ -142,3 +142,10 @@ catch (GeneratorException e)
     // do what you like
 }
 ```
+
+---
+
+## :construction_worker: To be implemented
++ Accept only alpha's in the `letters` parameter
++ Accept only numerics in the `numerics` parameter
++ Make sure the final seed has no duplicates
