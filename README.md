@@ -56,7 +56,7 @@ where `16` is the desired length of your password. Any length beginning with 1 a
 You can also provide additional parameters when generating passwords. All these parameters are optional. The default value of each follows each listing below:
 
 | Parameter                | Type     | Default value    |
-| ------------------------ |:--------:| ----------------:|
+| ------------------------ |:--------:| ---------------- |
 | `casing`                 | `enum`   | `Casing.Mixed`   |
 | `useSpecials`            | `bool`   | `true`           |
 | `useNumerics`            | `bool`   | `true`           |
@@ -73,7 +73,10 @@ public class Program
 {
     static void Main(string[] args) 
     {
-        var generator = new Generator(letters: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", numerics: "1234567890", specials: "!@#$%&[]()=?+*-_");
+        var generator = new Generator(letters: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 
+                                      numerics: "1234567890", 
+                                      specials: "!@#$%&[]()=?+*-_");
+
         var myPassword = generator.Generate(passwordLength: 32, 
                                             casing = Casing.Mixed,
                                             useSpecials: true,
