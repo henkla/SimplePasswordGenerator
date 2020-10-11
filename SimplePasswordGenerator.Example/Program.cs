@@ -24,7 +24,7 @@ namespace SimplePasswordGenerator.Example
                                                          Casing.Mixed,
                                                          useSpecials: true,
                                                          useNumerics: true,
-                                                         filter: "@");
+                                                         filter: "@#?");
 
                     Console.WriteLine("The password is:\n");
                     Console.WriteLine("--- BEGINNING OF PASSWORD ---");

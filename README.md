@@ -1,28 +1,30 @@
 # Simple Password Generator
 This library will generate a password given the options provided.
 
-## Usage
+## Installation
 First, install the nuget package:
 
-#### Visual Studio Package Manager
+##### Visual Studio Package Manager
 ```
 Install-Package SimplePasswordGenerator -Version 1.2.0
 ```
 
-#### .NET CLI
+##### .NET CLI
 ```
 dotnet add package SimplePasswordGenerator --version 1.2.0
 ```
 
-#### PackageReference
+##### PackageReference
 ```
 <PackageReference Include="SimplePasswordGenerator" Version="1.2.0" />
 ```
 
-#### Paket CLI
+##### Paket CLI
 ```
 paket add SimplePasswordGenerator --version 1.2.0
 ```
+
+## Usage
 
 Then, create the generator object:
 
@@ -54,16 +56,33 @@ You can also provide additional parameters when generating passwords. All these 
 + `useNumerics (bool)` - default: `true` 
 + `filter (string)` - default: `null` (no filter provided)
 
+#### Filter
+You can chose to filter out specific characters, i.e preventing those characters from ever ending up in the password generated. Simply provide the characters you want to avoid as a string for the `filter` parameter as shown above.
+
 ## Example
 Use the Simple Password Generator like so:
 
 
 
 ```csharp
-var generator = new Generator();
-var myPassword = generator.Generate(passwordLength: 32, 
-                                    casing = Casing.Mixed,
-                                    useSpecials: true,
-                                    useNumerics: true,
-                                    filter: "@");
+
+public class Program 
+{
+    static void Main(string[] args) 
+    {
+        var generator = new Generator();
+        var myPassword = generator.Generate(passwordLength: 32, 
+                                            casing = Casing.Mixed,
+                                            useSpecials: true,
+                                            useNumerics: true,
+                                            filter: "@#?");
+
+        Console.WriteLine($"The password is: {myPassword}");
+    }
+}
+```
+
+This will print out the following in the console:
+```
+The password is: AwMHK)fzhQqKF*&ymoKu-Uofhp8lY5Ug
 ```
