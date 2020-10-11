@@ -2,12 +2,16 @@
 This library will generate a password given the options provided. It is a .NET Standard 2.0 library, so it works in both .NET Core and .NET Framework. It has no external dependencies and is light weight.
 
 ## Installation
-First, install the nuget package:
+First, install the nuget package. You can check out the package on the [NuGet website](https://www.nuget.org/packages/SimplePasswordGenerator/) if you like. To install it, chose your prefered method below:
 
 ##### Visual Studio Package Manager
 ```
 Install-Package SimplePasswordGenerator -Version 1.2.0
 ```
+
+##### Visual Studio NuGet manager
+just search for `SimplePasswordGenerator`
+
 
 ##### .NET CLI
 ```
