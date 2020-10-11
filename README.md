@@ -41,9 +41,9 @@ or, if you prefer to have more control of which characters to be uses as seed fo
 var generator = new Generator(letters: "abc", numerics: "123", specials: "@#?");
 ```
 _NOTE: the letters, numerics and specials provided by default (if none are provided in the constructor as shown above) are:_
-+ _letters: *ABCDEFGHIJKLMNOPQRSTUVWXYZ*_
-+ _numerics: *1234567890*_
-+ _specials: *!@#$%&[]()=?+*-\_*_
++ _letters: **ABCDEFGHIJKLMNOPQRSTUVWXYZ**_
++ _numerics: **1234567890**_
++ _specials: **!@#$%&[]()=?+*-\_**_
 
 After that, you can generate your password by calling the generators `Generate()` function like so:
 
@@ -57,10 +57,10 @@ You can also provide additional parameters when generating passwords. All these 
 
 | Parameter                | Type     | Default value    |
 | ------------------------ |:--------:| ---------------- |
-| `casing`                 | *enum*   | `Casing.Mixed`   |
-| `useSpecials`            | *bool*   | `true`           |
-| `useNumerics`            | *bool*   | `true`           |
-| `filter`                 | *string* | `null` (no filter provided) |
+| `casing`                 | **enum**   | `Casing.Mixed`   |
+| `useSpecials`            | **bool**   | `true`           |
+| `useNumerics`            | **bool**   | `true`           |
+| `filter`                 | **string** | `null` (no filter provided) |
 
 #### How filters work
 You can chose to filter out specific characters, i.e preventing those characters from ever ending up in the password generated. Simply provide the characters you want to avoid as a string for the `filter` parameter as shown above.
