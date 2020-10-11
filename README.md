@@ -40,7 +40,7 @@ or, if you prefer to have more control of which characters to be uses as seed fo
 ```csharp
 var generator = new Generator(letters: "abc", numerics: "123", specials: "@#?");
 ```
-_NOTE: the letters, numerics and specials provided by default (if none are provided in the constructor as shown above) are:_
+_:bulb: NOTE: the letters, numerics and specials provided by default (if none are provided in the constructor as shown above) are:_
 + _letters: **ABCDEFGHIJKLMNOPQRSTUVWXYZ**_
 + _numerics: **1234567890**_
 + _specials: **!@#$%&[]()=?+*-\_**_
