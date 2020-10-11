@@ -52,6 +52,17 @@ or, if you prefer to have more control of which characters to be uses as seed fo
 ```csharp
 var generator = new Generator(letters: "abc", numerics: "123", specials: "@#?");
 ```
+
+##### :bulb: Setting specials characters later on
+It is possible to set the special characters at a later poin t(after the generator object has been created). Simply access the `Specials` field and provide whatever `string` value you like:
+
+```csharp
+var generator = new Generator();
+generator.Specials = "!#@"
+```
+
+*NOTE: A blank space is not accepted and will throw a GeneratorException if provided. Also, any duplicate character will be ignored. In other words - `@@!!@!` is equal to `@!`.*
+
 ##### :bulb: Default password seed
 The letters, numerics and specials provided by default (if none are provided in the constructor as shown above) are:
 + _letters: **ABCDEFGHIJKLMNOPQRSTUVWXYZ**_
