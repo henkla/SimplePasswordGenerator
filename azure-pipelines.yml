@@ -1,0 +1,120 @@
+# ASP.NET Core (.NET Framework)
+
+
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+# CONFIG
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+# VARS
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  Major: '1'
+  Minor: '2'
+  Patch: '1'
+
+# INSTALL TOOLS
+steps:
+- task: NuGetToolInstaller@1
+  displayName: 'Install tools'
+
+# # RESTORE
+# - task: DotNetCoreCLI@2
+#   displayName: 'Restore projects'
+#   inputs:
+#     command: 'restore'
+#     projects: '**/*.sln'
+#     feedsToUse: 'select'
+
+# BUILD
+- task: DotNetCoreCLI@2
+  displayName: 'Build projects'
+  inputs:
+    command: 'build'
+    projects: '**/*.sln'
+
+# # TEST
+# - task: VSTest@2
+#   displayName: 'Run tests'
+#   inputs:
+#     testSelector: 'testAssemblies'
+#     testAssemblyVer2: |
+#       **\*test*.dll
+#       !**\*TestAdapter.dll
+#       !**\obj\**
+#     searchFolder: '$(System.DefaultWorkingDirectory)'
+
+# - task: NuGetAuthenticate@0
+#   displayName: 'Push to nuget.org'
+#   inputs:
+#     nuGetServiceConnections: 'nuget-push'
+# - task: NuGetCommand@2
+#   inputs:
+#     command: push
+#     nuGetFeedType: external
+#     versioningScheme: byBuildNumber
+
+# - task: PublishPipelineArtifact@1
+#   inputs:
+#     targetPath: '$(Pipeline.Workspace)'
+#     artifact: 'simplepasswordgenerator-artifact'
+#     publishLocation: 'pipeline'
+
+# - task: NuGetCommand@2
+#   inputs:
+#     command: 'push'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+#     nuGetFeedType: 'external'
+# #     publishFeedCredentials: 'nuget-push'
+# - task: NuGetCommand@2
+#   inputs:
+#     command: 'push'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+#     nuGetFeedType: 'internal'
+#     publishVstsFeed: '90ec9c85-2910-4fb1-a91f-6a7258368f44/72a0158d-eca2-4dcd-ba17-487bfb0db7ae'
+#     allowPackageConflicts: true
+# NUGET PUSH
+- task: NuGetCommand@2
+  displayName: 'Push to nuget.org'
+  inputs:
+    command: 'push'
+    arguments: '-Source https://api.nuget.org/v3/index.json -Api-Key $(nuget-api-key)'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg;**/*.nupkg;*.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '90ec9c85-2910-4fb1-a91f-6a7258368f44/72a0158d-eca2-4dcd-ba17-487bfb0db7ae'
+    allowPackageConflicts: true
+    versioningScheme: byPrereleaseNumber
+
+# - task: NuGetCommand@2
+#   inputs:
+#     command: 'push'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+#     nuGetFeedType: 'external'
+# #     publishFeedCredentials: 'nuget-push'
+# - task: NuGetAuthenticate@0
+#   inputs:
+#     nuGetServiceConnections: 'nuget-push'
+
+# - task: NuGetCommand@2
+#   inputs:
+#     command: 'custom'
+#     arguments: 'push *.nupkg --source https://api.nuget.org/v3/index.json --api-key $(nuget-api-key) --skip-duplicate'
+
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'push'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+#     nuGetFeedType: 'internal'
+
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'custom'
+#     custom: 'push *.nupkg --source https://api.nuget.org/v3/index.json --api-key $(nuget-api-key) --skip-duplicate -NonInteractive'
