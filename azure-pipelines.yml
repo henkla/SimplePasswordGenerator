@@ -70,8 +70,14 @@ steps:
 #     command: 'push'
 #     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
 #     nuGetFeedType: 'external'
-#     publishFeedCredentials: 'nuget-push'
-
+# #     publishFeedCredentials: 'nuget-push'
+# - task: NuGetCommand@2
+#   inputs:
+#     command: 'push'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+#     nuGetFeedType: 'internal'
+#     publishVstsFeed: '90ec9c85-2910-4fb1-a91f-6a7258368f44/72a0158d-eca2-4dcd-ba17-487bfb0db7ae'
+#     allowPackageConflicts: true
 # NUGET PUSH
 - task: NuGetCommand@2
   displayName: 'Push to nuget.org'
@@ -80,6 +86,7 @@ steps:
     arguments: '-Source https://api.nuget.org/v3/index.json -Api-Key $(nuget-api-key)'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg;**/*.nupkg;*.nupkg'
     nuGetFeedType: 'internal'
+    publishVstsFeed: '90ec9c85-2910-4fb1-a91f-6a7258368f44/72a0158d-eca2-4dcd-ba17-487bfb0db7ae'
     allowPackageConflicts: true
 
 # - task: NuGetCommand@2
