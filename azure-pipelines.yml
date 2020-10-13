@@ -69,7 +69,7 @@ steps:
   displayName: 'Push to nuget.org'
   inputs:
     command: 'push'
-    arguments: -ApiKey $(nuget-api-key)
+    arguments: '-ApiKey $(nuget-api-key) -Source https://api.nuget.org/v3/index.json'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg;**/*.nupkg;*.nupkg'
     nuGetFeedType: 'external'
     allowPackageConflicts: true
