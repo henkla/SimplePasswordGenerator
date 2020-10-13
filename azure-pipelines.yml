@@ -59,11 +59,11 @@ steps:
 #     command: 'custom'
 #     arguments: 'push *.nupkg --source https://api.nuget.org/v3/index.json --api-key $(nuget-api-key) --skip-duplicate'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-    nuGetFeedType: 'internal'
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'push'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+#     nuGetFeedType: 'internal'
 
 - task: DotNetCoreCLI@2
   inputs:
