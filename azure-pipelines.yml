@@ -28,15 +28,16 @@ steps:
   displayName: 'Restore projects'
   inputs:
     command: 'restore'
-    projects: '**/*.sln'
+    projects: '**/SimplePasswordGenerator.Test.csproj;**/SimplePasswordGenerator.csproj*'
     feedsToUse: 'select'
+    verbosityRestore: 'Minimal'
 
 # BUILD
 - task: DotNetCoreCLI@2
   displayName: 'Build projects'
   inputs:
     command: 'build'
-    projects: '**/*.sln;!**/*.Example*'
+    projects: '**/SimplePasswordGenerator.Test.csproj;**/SimplePasswordGenerator.csproj*'
 
 # TEST
 - task: VSTest@2
