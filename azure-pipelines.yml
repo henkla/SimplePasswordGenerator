@@ -17,6 +17,9 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  Major: '1'
+  Minor: '2'
+  Patch: '1'
 
 # INSTALL TOOLS
 steps:
@@ -88,7 +91,8 @@ steps:
     nuGetFeedType: 'internal'
     publishVstsFeed: '90ec9c85-2910-4fb1-a91f-6a7258368f44/72a0158d-eca2-4dcd-ba17-487bfb0db7ae'
     allowPackageConflicts: true
-    versioningScheme: byBuildNumber
+    versioningScheme: byEnvVar
+    versionEnvVar: '1.2.1'
 
 # - task: NuGetCommand@2
 #   inputs:
