@@ -57,4 +57,4 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'custom'
-    arguments: 'dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key *** --skip-duplicate'
+    arguments: 'dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key $(nuget-api-key) --skip-duplicate'
