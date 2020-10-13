@@ -3,31 +3,37 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
+# CONFIG
 trigger:
 - master
 
 pool:
   vmImage: 'windows-latest'
 
+# VARS
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
+# INSTALL TOOLS
 steps:
 - task: NuGetToolInstaller@1
 
+# RESTORE
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
     projects: '**/*.sln'
     feedsToUse: 'select'
 
+# BUILD
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
     projects: '**/*.sln'
 
+# TEST
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
@@ -37,6 +43,7 @@ steps:
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
 
+# NUGEt PACK
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
@@ -44,10 +51,11 @@ steps:
     versioningScheme: 'byPrereleaseNumber'
     restoreSolution: '$(solution)'
 
+# NUGET PUSH
 - task: NuGetCommand@2
   inputs:
     command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg;**/nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'a65e1076-61a5-4d47-9f34-e7fbd41284b7'
     allowPackageConflicts: true
