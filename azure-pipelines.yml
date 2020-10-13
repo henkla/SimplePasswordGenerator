@@ -43,14 +43,6 @@ steps:
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
 
-# NUGEt PACK
-- task: NuGetCommand@2
-  inputs:
-    command: 'pack'
-    packagesToPack: '**/SimplePasswordGenerator.csproj'
-    versioningScheme: 'byPrereleaseNumber'
-    restoreSolution: '$(solution)'
-
 # NUGET PUSH
 - task: NuGetCommand@2
   inputs:
