@@ -49,12 +49,10 @@ steps:
     searchFolder: '$(System.DefaultWorkingDirectory)'
 
 - task: NuGetAuthenticate@0
-  displayName: 'Authenticate with nuget.org'
+  displayName: 'Push to nuget.org'
   inputs:
     nuGetServiceConnections: 'nuget-push'
-
 - task: NuGetCommand@2
-  displayName: 'Push to nuget.org'
   inputs:
     command: push
     nuGetFeedType: external
