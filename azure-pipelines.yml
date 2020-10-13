@@ -54,7 +54,18 @@ steps:
 #     publishFeedCredentials: 'oy2lfh2ejrs5hgcb4phq2colmph2gyluhd3i72jdlovkmi'
 #     vstsFeed: 'https://www.nuget.org/api/v2/package'
 
-- task: NuGetCommand@2
+# - task: NuGetCommand@2
+#   inputs:
+#     command: 'custom'
+#     arguments: 'push *.nupkg --source https://api.nuget.org/v3/index.json --api-key $(nuget-api-key) --skip-duplicate'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: 'internal'
+
+- task: DotNetCoreCLI@2
   inputs:
     command: 'custom'
-    arguments: 'push *.nupkg --source https://api.nuget.org/v3/index.json --api-key $(nuget-api-key) --skip-duplicate'
+    custom: 'push *.nupkg --source https://api.nuget.org/v3/index.json --api-key $(nuget-api-key) --skip-duplicate -NonInteractive'
