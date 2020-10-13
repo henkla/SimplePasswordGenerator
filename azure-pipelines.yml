@@ -44,13 +44,17 @@ steps:
     searchFolder: '$(System.DefaultWorkingDirectory)'
 
 # NUGET PUSH
+# - task: NuGetCommand@2
+#   inputs:
+#     command: 'push'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg;**/*.nupkg;*.nupkg'
+#     nuGetFeedType: 'external'
+#     allowPackageConflicts: true
+#     externalFeedCredentials: 'oy2lfh2ejrs5hgcb4phq2colmph2gyluhd3i72jdlovkmi'
+#     publishFeedCredentials: 'oy2lfh2ejrs5hgcb4phq2colmph2gyluhd3i72jdlovkmi'
+#     vstsFeed: 'https://www.nuget.org/api/v2/package'
+
 - task: NuGetCommand@2
   inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg;**/*.nupkg;*.nupkg'
-    nuGetFeedType: 'external'
-    allowPackageConflicts: true
-    externalFeedCredentials: 'oy2lfh2ejrs5hgcb4phq2colmph2gyluhd3i72jdlovkmi'
-    publishFeedCredentials: 'oy2lfh2ejrs5hgcb4phq2colmph2gyluhd3i72jdlovkmi'
-    vstsFeed: 'https://www.nuget.org/api/v2/package'
-
+    command: 'custom'
+    arguments: 'dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key *** --skip-duplicate'
