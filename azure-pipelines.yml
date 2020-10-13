@@ -37,26 +37,26 @@ steps:
     command: 'build'
     projects: '**/*.sln'
 
-# TEST
-- task: VSTest@2
-  displayName: 'Run tests'
-  inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      **\*test*.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
+# # TEST
+# - task: VSTest@2
+#   displayName: 'Run tests'
+#   inputs:
+#     testSelector: 'testAssemblies'
+#     testAssemblyVer2: |
+#       **\*test*.dll
+#       !**\*TestAdapter.dll
+#       !**\obj\**
+#     searchFolder: '$(System.DefaultWorkingDirectory)'
 
-- task: NuGetAuthenticate@0
-  displayName: 'Push to nuget.org'
-  inputs:
-    nuGetServiceConnections: 'nuget-push'
-- task: NuGetCommand@2
-  inputs:
-    command: push
-    nuGetFeedType: external
-    versioningScheme: byBuildNumber
+# - task: NuGetAuthenticate@0
+#   displayName: 'Push to nuget.org'
+#   inputs:
+#     nuGetServiceConnections: 'nuget-push'
+# - task: NuGetCommand@2
+#   inputs:
+#     command: push
+#     nuGetFeedType: external
+#     versioningScheme: byBuildNumber
 
 # - task: PublishPipelineArtifact@1
 #   inputs:
@@ -65,15 +65,17 @@ steps:
 #     publishLocation: 'pipeline'
 
 # NUGET PUSH
-# - task: NuGetCommand@2
-#   inputs:
-#     command: 'push'
-#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg;**/*.nupkg;*.nupkg'
-#     nuGetFeedType: 'external'
-#     allowPackageConflicts: true
-#     externalFeedCredentials: 'oy2lfh2ejrs5hgcb4phq2colmph2gyluhd3i72jdlovkmi'
-#     publishFeedCredentials: 'oy2lfh2ejrs5hgcb4phq2colmph2gyluhd3i72jdlovkmi'
-#     vstsFeed: 'https://www.nuget.org/api/v2/package'
+- task: NuGetCommand@2
+  displayName: 'Push to nuget.org'
+  inputs:
+    command: 'push'
+    arguments: -ApiKey $(nuget-api-key)
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg;**/*.nupkg;*.nupkg'
+    nuGetFeedType: 'external'
+    allowPackageConflicts: true
+    externalFeedCredentials: 'oy2lfh2ejrs5hgcb4phq2colmph2gyluhd3i72jdlovkmi'
+    publishFeedCredentials: 'oy2lfh2ejrs5hgcb4phq2colmph2gyluhd3i72jdlovkmi'
+    vstsFeed: 'https://www.nuget.org/api/v2/package'
 
 # - task: NuGetCommand@2
 #   inputs:
