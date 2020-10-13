@@ -41,7 +41,7 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '**/SimplePasswordGenerator.csproj'
-    versioningScheme: 'byBuildNumber'
+    versioningScheme: 'byPrereleaseNumber'
     restoreSolution: '$(solution)'
 
 - task: NuGetCommand@2
