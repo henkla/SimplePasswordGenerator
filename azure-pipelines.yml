@@ -8,6 +8,7 @@
 # CONFIG
 trigger:
 - master
+name: restore-build-test-push
 
 pool:
   vmImage: 'windows-latest'
