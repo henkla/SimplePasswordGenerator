@@ -28,7 +28,7 @@ steps:
   displayName: 'Restore projects'
   inputs:
     command: 'restore'
-    projects: '**\*SimplePasswordGenerator.Test\*.csproj;**\*SimplePasswordGenerator\*.csproj'
+    projects: '**\*.sln'
     feedsToUse: 'select'
     verbosityRestore: 'Minimal'
 
@@ -37,7 +37,7 @@ steps:
   displayName: 'Build projects'
   inputs:
     command: 'build'
-    projects: '**\*SimplePasswordGenerator.Test\*.csproj;**\*SimplePasswordGenerator\*.csproj'
+    projects: '**\*.sln'
 
 # TEST
 - task: VSTest@2
