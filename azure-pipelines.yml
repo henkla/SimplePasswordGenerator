@@ -23,13 +23,13 @@ steps:
 - task: NuGetToolInstaller@1
   displayName: 'Install tools'
 
-# RESTORE
-- task: DotNetCoreCLI@2
-  displayName: 'Restore projects'
-  inputs:
-    command: 'restore'
-    projects: '**/*.sln'
-    feedsToUse: 'select'
+# # RESTORE
+# - task: DotNetCoreCLI@2
+#   displayName: 'Restore projects'
+#   inputs:
+#     command: 'restore'
+#     projects: '**/*.sln'
+#     feedsToUse: 'select'
 
 # BUILD
 - task: DotNetCoreCLI@2
@@ -88,16 +88,17 @@ steps:
     nuGetFeedType: 'internal'
     publishVstsFeed: '90ec9c85-2910-4fb1-a91f-6a7258368f44/72a0158d-eca2-4dcd-ba17-487bfb0db7ae'
     allowPackageConflicts: true
+    versioningScheme: byBuildNumber
 
 # - task: NuGetCommand@2
 #   inputs:
 #     command: 'push'
 #     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
 #     nuGetFeedType: 'external'
-#     publishFeedCredentials: 'nuget-push'
-- task: NuGetAuthenticate@0
-  inputs:
-    nuGetServiceConnections: 'nuget-push'
+# #     publishFeedCredentials: 'nuget-push'
+# - task: NuGetAuthenticate@0
+#   inputs:
+#     nuGetServiceConnections: 'nuget-push'
 
 # - task: NuGetCommand@2
 #   inputs:
