@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace SimplePasswordGenerator
 {
     public class Generator
     {
         private readonly Random _random;
-        private readonly string _letters;
+        private string _letters;
         private readonly string _numerics;
         private string _specials;
 
@@ -32,6 +33,31 @@ namespace SimplePasswordGenerator
         }
 
         /// <summary>
+        /// Get or set the letters to be used in generating the password
+        /// </summary>
+        public string Letters
+        {
+            get { return _letters; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new GeneratorException("The \"letters\" field cannot be null");
+                }
+                else if (value.Contains(" "))
+                {
+                    throw new GeneratorException("The \"letters\" field cannot contain a \"space\" as a character");
+                }
+                else if (!string.Equals(value, string.Empty) && !Regex.IsMatch(value, @"^[a-zA-Z]+$"))
+                {
+                    throw new GeneratorException($"The \"letters\" field can only contain alpha characters. Provided characters was \"{value}\"");
+                }
+
+                _letters = new string(value.Distinct().ToArray());
+            }
+        }
+
+        /// <summary>
         /// Will initialize the Generator with default values for letters, numerics and special characters
         /// </summary>
         public Generator() : this(letters: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", numerics: "1234567890", specials: "!@#$%&[]()=?+*-_") { }
@@ -45,7 +71,7 @@ namespace SimplePasswordGenerator
         public Generator(string letters, string numerics, string specials)
         {
             _random = new Random();
-            _letters = letters;
+            Letters = letters;
             _numerics = numerics;
             Specials = specials;
         }
@@ -125,9 +151,12 @@ namespace SimplePasswordGenerator
             return result;
         }
 
-        private string ActuallyGeneratePassword(uint passwordLength, string result)
+        private string ActuallyGeneratePassword(uint passwordLength, string seed)
         {
-            return new string(Enumerable.Repeat(result, (int)passwordLength)
+            if (string.IsNullOrEmpty(seed))
+                throw new GeneratorException("The password seed is empty. Check your configuration");
+
+            return new string(Enumerable.Repeat(seed, (int)passwordLength)
                             .Select(s => s[_random.Next(s.Length)]).ToArray());
         }
     }
