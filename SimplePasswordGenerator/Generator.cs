@@ -19,9 +19,9 @@ namespace SimplePasswordGenerator
             get { return _specials; }
             set 
             {
-                if (string.IsNullOrEmpty(value))
+                if (value == null)
                 {
-                    throw new GeneratorException("The \"specials\" field cannot be null or empty");
+                    throw new GeneratorException("The \"specials\" field cannot be null");
                 }
                 else if (value.Contains(" "))
                 {
