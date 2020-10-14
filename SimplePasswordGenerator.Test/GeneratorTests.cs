@@ -21,6 +21,18 @@ namespace SimplePasswordGenerator.Test
         }
 
         [Fact]
+        public void Specials_WhenEmptyStringIsProvided_DoesNotThrow()
+        {
+            // Arrange
+            var generator = new Generator();
+
+            // Act
+            // Assert
+            generator.Specials = "";
+            generator.Specials = string.Empty;
+        }
+
+        [Fact]
         public void Specials_WhenRandomValidStringIsProvided_DoesNotThrow()
         {
             // Arrange
