@@ -8,7 +8,7 @@ namespace SimplePasswordGenerator
     {
         private readonly Random _random;
         private string _letters;
-        private readonly string _numerics;
+        private string _numerics;
         private string _specials;
 
         /// <summary>
@@ -58,6 +58,31 @@ namespace SimplePasswordGenerator
         }
 
         /// <summary>
+        /// Get or set the numerics to be used in generating the password
+        /// </summary>
+        public string Numerics
+        {
+            get { return _numerics; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new GeneratorException("The \"numerics\" field cannot be null");
+                }
+                else if (value.Contains(" "))
+                {
+                    throw new GeneratorException("The \"numerics\" field cannot contain a \"space\" as a character");
+                }
+                else if (!string.Equals(value, string.Empty) && !Regex.IsMatch(value, @"^[0-9]+$"))
+                {
+                    throw new GeneratorException($"The \"numerics\" field can only contain numeric characters. Provided characters was \"{value}\"");
+                }
+
+                _numerics = new string(value.Distinct().ToArray());
+            }
+        }
+
+        /// <summary>
         /// Will initialize the Generator with default values for letters, numerics and special characters
         /// </summary>
         public Generator() : this(letters: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", numerics: "1234567890", specials: "!@#$%&[]()=?+*-_") { }
@@ -72,7 +97,7 @@ namespace SimplePasswordGenerator
         {
             _random = new Random();
             Letters = letters;
-            _numerics = numerics;
+            Numerics = numerics;
             Specials = specials;
         }
 

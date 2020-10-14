@@ -117,6 +117,55 @@ namespace SimplePasswordGenerator.Test
             generator.Letters = "abc";
         }
 
+        [Fact]
+        public void Numerics_WhenWhitespaceIsProvided_ThrowsGeneratorException()
+        {
+            // Arrange
+            var generator = new Generator();
+
+            // Act
+            // Assert
+            Assert.Throws<GeneratorException>(() => generator.Numerics = "123 456");
+        }
+
+        [Fact]
+        public void Numerics_WhenNullIsProvided_ThrowsGeneratorException()
+        {
+            // Arrange
+            var generator = new Generator();
+
+            // Act
+            // Assert
+            Assert.Throws<GeneratorException>(() => generator.Numerics = null);
+        }
+
+        [Fact]
+        public void Numerics_WhenEmptyStringIsProvided_DoesNotThrow()
+        {
+            // Arrange
+            var generator = new Generator();
+
+            // Act
+            // Assert
+            generator.Numerics = "";
+            generator.Numerics = string.Empty;
+        }
+
+        [Theory]
+        [InlineData("123")]
+        [InlineData("0")]
+        [InlineData("12341234")]
+        [InlineData("999")]
+        public void Numerics_WhenValidStringIsProvided_DoesNotThrow(string value)
+        {
+            // Arrange
+            var generator = new Generator();
+
+            // Act
+            // Assert
+            generator.Numerics = value;
+        }
+
         private int GenerateRandomNumber(int lowest, int highest)
         {
             var random = new Random();
