@@ -63,7 +63,7 @@ namespace SimplePasswordGenerator.Test
         [Theory]
         [InlineData(0)]
         [InlineData(1025)]
-        public void Specials_WhenLengthIsInvalid_ThrowsGenerationException(uint length)
+        public void Generate_WhenLengthIsInvalid_ThrowsGenerationException(uint length)
         {
             // Arrange
             var generator = new Generator();
@@ -74,7 +74,7 @@ namespace SimplePasswordGenerator.Test
         }
 
         [Fact]
-        public void Specials_WhenLengthIsValid_DoesNotThrow()
+        public void Generate_WhenLengthIsValid_DoesNotThrow()
         {
             // Arrange
             var generator = new Generator();
