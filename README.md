@@ -63,11 +63,13 @@ or, if you prefer to have more control over which characters to be used as seed 
 var generator = new Generator(letters: "abc", numerics: "123", specials: "@#?");
 ```
 
-##### :bulb: Setting specials characters later on
-It is possible to set the special characters at a later point (after the generator object has been created). Simply access the `Specials` field and provide whatever `string` value you like:
+##### :bulb: Configurating seed later on
+It is possible to set the special characters, letters and numerics at a later point (after the generator object has been created). Simply access the adequate field after the `Generator` has been created and provide a valid string:
 
 ```csharp
 var generator = new Generator();
+generator.Letters = "ABC";
+generator.Numerics = "123";
 generator.Specials = "!#@";
 ```
 
@@ -152,6 +154,6 @@ catch (GeneratorException e)
 ---
 
 ## :construction_worker: Yet to be implemented
-+ Accept only alphas in the `letters` parameter
-+ Accept only numerics in the `numerics` parameter
-+ Make sure the final seed has no duplicates
++ ~~Accept only alphas in the `letters` parameter~~
++ ~~Accept only numerics in the `numerics` parameter~~
++ ~~Make sure the final seed has no duplicates~~
