@@ -10,7 +10,7 @@ namespace SimplePasswordGenerator.Test
         [InlineData(null)]
         [InlineData(" ")]
         [InlineData("a b")]
-        public void Specials_WhenWhitespaceOrNullIsProvided_ThrowsGenerationException(string value)
+        public void Specials_WhenWhitespaceOrNullIsProvided_ThrowsGeneratorException(string value)
         {
             // Arrange
             var generator = new Generator();
@@ -63,7 +63,7 @@ namespace SimplePasswordGenerator.Test
         [Theory]
         [InlineData(0)]
         [InlineData(1025)]
-        public void Generate_WhenLengthIsInvalid_ThrowsGenerationException(uint length)
+        public void Generate_WhenLengthIsInvalid_ThrowsGeneratorException(uint length)
         {
             // Arrange
             var generator = new Generator();
